@@ -25,7 +25,7 @@ contract ConfigureGDAOStaking is Script {
     address xgdao = vm.envAddress("GOERLI_XGDAO"); // make sure updated in .env
     address stakingA = vm.envAddress("GOERLI_STAKING"); // make sure updated in .env
     address distributor = vm.envAddress("GOERLI_DISTRIBUTOR"); // make sure updated in .env
-
+  
     address authority = vm.envAddress("GOERLI_AUTHORITY"); // make sure updated in .env
     GoerliStaking staking = GoerliStaking(stakingA);
     xGDAO xGdao = xGDAO(xgdao);
@@ -39,10 +39,10 @@ contract ConfigureGDAOStaking is Script {
     sGdao.setxGDAO(xgdao);
     sGdao.initialize(stakingA, vm.envAddress("GOERLI_DEPLOYER"));
 
-    sGDAO(gdao).approve(stakingA, 10000000000000);
+    // sGDAO(gdao).approve(stakingA, 1000000000000);
 
     //staking.unstake(0x525D98F9B0F4b011cC01720aE1d31d240729D6Ba, 100, false, false);
-    staking.stake(vm.envAddress("GOERLI_DEPLOYER"), 100000000000, false, true);
+    // staking.stake(vm.envAddress("GOERLI_DEPLOYER"), 99000000000, false, true);
     //Distributor(distributor).triggerRebase();
 
     vm.stopBroadcast();

@@ -31,11 +31,17 @@ contract KernelDeploy is Script {
   RolesAdmin roles_admin;
   TreasuryCustodian treasury_custodian;
 
-  // address tgd_addr = vm.envAddress("GOERLI_GDAO"); //update env
   address gdao_addr = vm.envAddress("GOERLI_GDAO");
   address staking_addr = vm.envAddress("GOERLI_STAKING"); //update env
-  uint256 initialRate = 12055988; // 50M% APR
-  // address dist = vm.envAddress("GOERLI_DISTRIBUTOR"); //update env
+  // uint256 initialRate = 12055988; // 50M% APR
+  uint256 initialRate = 4975246; // 22K% APR
+  // Day 1-3: 4975246 = 22k% APR 1.5%/day12055988
+  // Day 4-7: 3322283 = 3.778k% APR 1%/day
+  // Day 7-14:1663896 = 617% APR 0.5%/day
+  // Day 14-21: 832639= 248.77% APR 0.25%/day
+  // Day 21-28: 333222= 144.025% APR 0.1%/day
+  
+
 
 // authority, gdao, staking, sgdao, xgdao, migrator should already be deployed at this point
 
@@ -58,8 +64,6 @@ contract KernelDeploy is Script {
     emergency = new Emergency(kernel);
     treasury_custodian = new TreasuryCustodian(kernel);
     roles_admin = new RolesAdmin(kernel);
-
-
     
     kernel.executeAction(Actions.InstallModule, address(gdaoInstr));
     kernel.executeAction(Actions.InstallModule, address(gdaoMinter));
@@ -76,9 +80,6 @@ contract KernelDeploy is Script {
     // roles admin
     // treasury custodian
     // bondcallback?
-
-
-
 
     vm.stopBroadcast();
     return kernel;

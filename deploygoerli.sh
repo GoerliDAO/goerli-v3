@@ -21,18 +21,29 @@ forge script script/DeployKernel.s.sol:KernelDeploy --rpc-url ${GOERLI_INFURA} -
 
 # run source .env
 
+# Create Uni V2 Pool
+
 # Deploy Stakin Config
 forge script script/v2/DeployStakingConfig.s.sol:ConfigureGDAOStaking --rpc-url ${GOERLI_INFURA}
 forge script script/v2/DeployStakingConfig.s.sol:ConfigureGDAOStaking --rpc-url ${GOERLI_INFURA} --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast --verify --optimize --optimizer-runs 20000 -vvvv
+
 
 # Deploy Stakin Config Pt 2 (after the first epoch ends)
 forge script script/v2/DeployStakingPt2.s.sol:GDAOStakingConfigPt2 --rpc-url ${GOERLI_INFURA}
 forge script script/v2/DeployStakingPt2.s.sol:GDAOStakingConfigPt2 --rpc-url ${GOERLI_INFURA} --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast --verify --optimize --optimizer-runs 20000 -vvvv
 
+# Deploy Gelato Automation and fund wallet (later put alert for low balance?)
+
 # Deploy Stakin Config Pt 3 (test with diff account - update signing account)
 forge script script/v2/DeployStakingTest.s.sol:StakingTestDeploy --rpc-url ${GOERLI_INFURA}
 forge script script/v2/DeployStakingTest.s.sol:StakingTestDeploy --rpc-url ${GOERLI_INFURA} --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast --verify --optimize --optimizer-runs 20000 -vvvv
 
+# Deploy Multi sig Contract (Policy)
+forge script script/DeployMultiSig.s.sol:MultisigDeploy --rpc-url ${GOERLI_INFURA}
+forge script script/DeployMultiSig.s.sol:MultisigDeploy --rpc-url ${GOERLI_INFURA} --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast --verify --optimize --optimizer-runs 20000 -vvvv
+
+# Deploy Multi Sig Contract (DAO/Treasury)
+
 # Deploy Forwarder Contract
-forge script script/DeployForwarder.s.sol:ForwarderDeploy --rpc-url ${GOERLI_INFURA}
-forge script script/DeployForwarder.s.sol:ForwarderDeploy --rpc-url ${GOERLI_INFURA} --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast --verify --optimize --optimizer-runs 20000 -vvvv
+# forge script script/DeployForwarder.s.sol:ForwarderDeploy --rpc-url ${GOERLI_INFURA}
+# forge script script/DeployForwarder.s.sol:ForwarderDeploy --rpc-url ${GOERLI_INFURA} --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast --verify --optimize --optimizer-runs 20000 -vvvv

@@ -7,7 +7,7 @@ forge verify-contract --chain-id 5 --flatten --watch --compiler-version "v0.8.15
 forge verify-contract --force --chain-id 5 --flatten --watch --compiler-version "v0.8.15+commit.e14f2714" --constructor-args $(cast abi-encode "constructor(address,address,address,address)" 0x47Cd2cDF6f4413a2c7F66B91887C7d3Fb7c21d08 0x47Cd2cDF6f4413a2c7F66B91887C7d3Fb7c21d08 0xEb132Bb3B49Cae688975476897AE12535069c1bc 0x47Cd2cDF6f4413a2c7F66B91887C7d3Fb7c21d08) 0xb04e0937de6bab1606ed9cfb3d9e9627bcbf28af GdaoAuthority 
 
 # GDAO
-forge verify-contract --force --chain-id 5 --flatten --watch --compiler-version "v0.8.15+commit.e14f2714" --constructor-args $(cast abi-encode "constructor(address)" 0xB04E0937DE6bAb1606eD9CFb3d9e9627bcbf28af) 0x89176d8025453555B3465E16c5f99093F7a462B5 src/external/GDAO.sol:GDAO
+forge verify-contract --force --chain-id 5 --flatten --watch --compiler-version "v0.8.15+commit.e14f2714" --constructor-args $(cast abi-encode "constructor(address)" 0x974577beF933D8A83aE397BD1A398aF3Ea033764) 0xc736650d72C6821bea594b14592e1531D3E02738 src/external/GDAO.sol:GDAO
 
 # -------------------------------------------------#
 

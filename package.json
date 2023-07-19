@@ -17,6 +17,7 @@
         "test": "./shell/test_all.sh"
     },
     "devDependencies": {
+        "@nomicfoundation/hardhat-ethers": "^3.0.0",
         "@typechain/ethers-v5": "^10.2.0",
         "prettier": "^2.5.1",
         "prettier-plugin-solidity": "^1.0.0-beta.19",
@@ -34,10 +35,13 @@
         "@ethersproject/address": "^5.7.0",
         "@ethersproject/bytes": "^5.7.0",
         "@ethersproject/providers": "^5.7.2",
+        "@gelatonetwork/automate-sdk": "^2.1.1",
         "ethers": "5",
-        "hardhat": "^2.13.0",
+        "hardhat": "^2.14.1",
         "hardhat-preprocessor": "^0.1.5",
         "typechain-target-react-query-wagmi": "^0.1.0",
         "typescript": "^5.0.2"
-    }
+    },
+    "main": "index.js",
+    "license": "MIT"
 }

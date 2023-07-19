@@ -35,11 +35,11 @@ contract V2Deploy is Script {
     vm.startBroadcast(deployerPrivateKey);
     // kernel = new Kernel();
 
-    address governor = vm.envAddress("GOERLI_DEPLOYER");
-    address guardian = vm.envAddress("GOERLI_DEPLOYER");
-    address policy = vm.envAddress("GOERLI_MULTISIG");
-    address vault = vm.envAddress("GOERLI_DEPLOYER");
-    address newVault = vm.envAddress("GOERLI_DEPLOYER");
+    address governor = vm.envAddress("DAO_GOERLI_MULTISIG"); // dao
+    address guardian = vm.envAddress("POLICY_GOERLI_MULTISIG"); //exec 
+    address policy = vm.envAddress("DAO_GOERLI_MULTISIG");  // dao
+    address vault = vm.envAddress("GOERLI_DEPLOYER"); // deployer
+    address newVault = vm.envAddress("DAO_GOERLI_MULTISIG"); // dao
     GdaoAuthority authority = new GdaoAuthority(governor, guardian, policy, vault);
     address authority_addr = address(authority); //update env
 
@@ -53,9 +53,14 @@ contract V2Deploy is Script {
     address xgdao_addr = address(xgdao); //update env
 
     // Mint and Approve 1000000.000000000000000000 GDAO and send it to deployer
-    gdao.approve(newVault, 1000000000000000000);
-    gdao.mint(newVault, 1000000000000000000);
-    
+    // gdao.approve(newVault, 300000000000);// 712739483828617010754584
+    // gdao.mint(newVault, 300000000000);
+
+    uint256 total = 1069109225742926;
+    gdao.approve(newVault, total); // 712739483828618 // 1069109.2257429254
+    gdao.mint(newVault, total);
+    // gdao.increaseAllowance(vm.envAddress("GOERLI_DEPLOYER"), gdao.totalSupply());
+    // gdao.transferFrom(vm.envAddress("GOERLI_DEPLOYER"), vm.envAddress("DAO_GOERLI_MULTISIG"), 1);
     vm.stopBroadcast();
     return xgdao;
   }

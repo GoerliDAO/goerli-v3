@@ -18,3 +18,15 @@ out/**/*.json
 typechain/**/*.ts
 notes.txt
 
+
+node_modules
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+
